@@ -1,4 +1,4 @@
-import  React from 'react';
+import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 
@@ -10,18 +10,17 @@ class Selectcomponent extends React.Component{
        
         
     }
-    onChangeFunc() {
+    onChangeFunc(event) {
+        // this.refs.App.getAlert()
+       // var x = document.getElementById("dropdown").value;
+       // alert(this.props.labelName+","+x);
+//console.log(x);
+       this.props.getOption(this.props.labelName,event);
+       //alert(this.props.labelName+","+this.props.getOption)
        
-        var x = document.getElementById("dropdown").value;
-        
-        
-      
-        alert(this.props.labelName+","+this.props.optionValue);
-        
-      }
+    
+     }
      
-    
-    
     render(){
         console.log(this.props);
        
@@ -31,22 +30,19 @@ class Selectcomponent extends React.Component{
         return(
 <div>
     
-            <label for="country ">{this.props.labelName } </label>
-            
-            
-                    <select id = "dropdown" onChange={this.onChangeFunc}>
-                <option value="null"></option>
-    
-      
-
-            {optionDetails}
-            
-              
-            </select>
-            </div>
+                <label for="country ">{this.props.labelName} </label>
+                <select id="dropdown" onChange={this.onChangeFunc.bind(this)}>
+                    <option value="null"></option>
+                     {optionDetails}
+                </select>
+</div>
 
 
-        )
-    }
+               )
+             }
 }
 export default Selectcomponent;
+
+
+
+
